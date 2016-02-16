@@ -15,6 +15,10 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/aimeos/php-coveralls.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/aimeos/psr-http-message-bridge.git"
 		}
 	],
 	"prefer-stable": true,
