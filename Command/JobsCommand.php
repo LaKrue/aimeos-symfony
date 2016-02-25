@@ -89,7 +89,7 @@ class JobsCommand extends Command
 		$locale->setLanguageId( 'en' );
 		$ctx->setLocale( $locale );
 
-		$i18n = new \Aimeos\MW\Translation\Zend2( array(), 'gettext', 'en', array( 'disableNotices' => true ) );
+		$i18n = new \Aimeos\MW\Translation\None( 'en' );
 		$ctx->setI18n( array( 'en' => $i18n ) );
 
 		return $ctx;
@@ -108,7 +108,6 @@ class JobsCommand extends Command
 		$context = $container->get( 'aimeos_context' )->get( false );
 
 		$tmplPaths = $aimeos->getCustomPaths( 'controller/jobs/templates' );
-		$tmplPaths = array_merge( $tmplPaths, $aimeos->getCustomPaths( 'client/html/templates' ) );
 		$view = $container->get('aimeos_view')->create( $context->getConfig(), $tmplPaths );
 
 		$langManager = \Aimeos\MShop\Locale\Manager\Factory::createManager( $context )->getSubManager( 'language' );

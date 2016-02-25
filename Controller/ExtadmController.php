@@ -109,7 +109,7 @@ class ExtadmController extends Controller
 
 		$controller = new \Aimeos\Controller\ExtJS\JsonRpc( $context, $cntlPaths );
 
-		$response = $controller->process( $request->request->all(), 'php://input' );
+		$response = $controller->process( $request->request->all(), $request->getContent() );
 		return $this->render( 'AimeosShopBundle:Extadm:do.html.twig', array( 'output' => $response ) );
 	}
 
@@ -188,7 +188,7 @@ class ExtadmController extends Controller
 	 */
 	protected function getJsonClientI18n( array $i18nPaths, $lang )
 	{
-		$i18n = new \Aimeos\MW\Translation\Zend2( $i18nPaths, 'gettext', $lang, array( 'disableNotices' => true ) );
+		$i18n = new \Aimeos\MW\Translation\Gettext( $i18nPaths, $lang );
 
 		$content = array(
 			'admin' => $i18n->getAll( 'admin' ),
